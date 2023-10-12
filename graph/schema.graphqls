@@ -1,0 +1,71 @@
+type User {
+  id:       Int!
+  username: String!
+  email:    String!
+  token:    String!
+  articles: [Article!]!
+}
+
+type Article {
+  id: Int!
+  slug: String!
+  title: String!
+  tags: [Tag!]!
+  user: User!
+  content: String!
+  createdAt: String!
+}
+
+type Tag {
+  id: Int!
+  tag: String!
+  articles: [Article!]!
+}
+
+input UserInput {
+  username: String!
+  password: String!
+  email: String!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+input ArticleInput {
+  title: String!
+  tags: [TagInput!]!
+  content: String!
+}
+
+input TagInput {
+  tag: String!
+  #articles: [ArticleInput!]!
+}
+
+input TokenInput {
+  token: String!
+}
+
+type Mutation {
+  login(input: LoginInput!): User!
+  createUser(input: UserInput!): User!
+  changeUserPassword(userId: Int!, input: UserInput!): User!
+  deleteUserByID(userId: Int!): Boolean!
+  createArticle(input: ArticleInput!): Article!
+  updateArticle(articleId: Int!, input: ArticleInput!): Article!
+  deleteArticleByID(articleId: Int!): Boolean!
+  deleteArticleByTitle(title: String!): Boolean!
+  refreshToken(input: TokenInput!): String!
+}
+
+type Query {
+  allUsers: [User!]!
+  user(userId: Int!): User!
+  article(slug: String!): Article!
+  allArticles: [Article!]!
+#  allTags: [String!]!
+  articlesByTags(tags: [TagInput!]!): [Article!]!
+  articleById(articleId: Int!): Article!
+}

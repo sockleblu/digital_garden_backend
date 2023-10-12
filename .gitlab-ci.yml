@@ -1,0 +1,40 @@
+stages:
+  - sync
+  - build
+  - deploy
+
+sync_to_github:
+  stage: sync
+  tags:
+    - pena
+    - linux
+  script:
+    - if [[ $(git remote -v | grep github) ]]; then
+    -     echo 'github already added as remote'
+    - else
+    -     git remote add github git@github.com:sockleblu/digital_garden_backend.git
+    - fi
+    - git push github HEAD:refs/heads/master
+
+build:
+  stage: build
+  tags:
+    - pena
+    - linux
+  script:
+    - go run github.com/99designs/gqlgen generate
+    - go build
+  artifacts:
+    paths:
+      - blog_backend
+
+deploy:
+  stage: deploy
+  tags:
+    - blog
+  script:
+    - sudo systemctl stop blog_backend
+    - cp ./blog_backend /opt/blog_backend
+    - sudo systemctl start blog_backend
+  dependencies:
+    - build
