@@ -7,8 +7,8 @@ import (
 	"log"
 
 	"github.com/jinzhu/gorm"
-	"ivy.cave.local/sockleblu/blog_backend/graph/model"
-	"ivy.cave.local/sockleblu/blog_backend/graph/helpers"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/helpers"
 )
 
 // A private key for context that only this package can access. This is important

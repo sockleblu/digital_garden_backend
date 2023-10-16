@@ -5,7 +5,7 @@ import (
 	"time"
 	"log"
 
-	"ivy.cave.local/sockleblu/blog_backend/graph/model"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
 	"golang.org/x/crypto/bcrypt"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/jinzhu/gorm"

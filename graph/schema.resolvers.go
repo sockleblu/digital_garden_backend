@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"log"
 
-	"ivy.cave.local/sockleblu/blog_backend/graph/auth"
-	"ivy.cave.local/sockleblu/blog_backend/graph/generated"
-	"ivy.cave.local/sockleblu/blog_backend/graph/helpers"
-	"ivy.cave.local/sockleblu/blog_backend/graph/model"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/auth"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/generated"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/helpers"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
 )
 
 // User is the resolver for the user field.

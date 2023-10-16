@@ -17,10 +17,10 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 
-	"ivy.cave.local/sockleblu/blog_backend/graph"
-	"ivy.cave.local/sockleblu/blog_backend/graph/auth"
-	"ivy.cave.local/sockleblu/blog_backend/graph/generated"
-	"ivy.cave.local/sockleblu/blog_backend/graph/model"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/auth"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/generated"
+	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
 )
 
 const (
@@ -80,7 +80,7 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_domains := []string{"http://localhost:3000", "https://kylekennedy.dev"}
+	allowed_domains := []string{"http://localhost", "https://kylekennedy.dev"}
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing

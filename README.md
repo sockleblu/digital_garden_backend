@@ -100,8 +100,8 @@ Query Variables:
 ```
 {
   "input": {
-    "username": "sockleblu",
-    "password": "batman1",
+    "username": "test_username",
+    "password": "test_password",
   }
 }
 ```
