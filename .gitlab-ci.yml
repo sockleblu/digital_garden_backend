@@ -23,7 +23,7 @@ build:
     - linux
   script:
     - go run github.com/99designs/gqlgen generate
-    - go build
+    - go build blog_backend
   artifacts:
     paths:
       - blog_backend
