@@ -23,18 +23,18 @@ build:
     - linux
   script:
     - go run github.com/99designs/gqlgen generate
-    - go build blog_backend
+    - go build 
   artifacts:
     paths:
-      - blog_backend
+      - digital_garden_backend
 
 deploy:
   stage: deploy
   tags:
     - blog
   script:
-    - sudo systemctl stop blog_backend
-    - cp ./blog_backend /opt/blog_backend
-    - sudo systemctl start blog_backend
+    - sudo systemctl stop digital_garden_backend
+    - cp ./blog_backend /opt/digital_garden_backend
+    - sudo systemctl start digital_garden_backend
   dependencies:
     - build
