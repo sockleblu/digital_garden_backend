@@ -34,7 +34,7 @@ deploy:
     - blog
   script:
     - sudo systemctl stop digital_garden_backend
-    - cp ./blog_backend /opt/digital_garden_backend
+    - sudo cp ./digital_garden_backend /opt/digital_garden_backend
     - sudo systemctl start digital_garden_backend
   dependencies:
     - build
