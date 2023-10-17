@@ -80,7 +80,7 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_domains := []string{"http://localhost:3000", "http://kylekennedy.dev"}
+	allowed_domains := []string{"http://localhost:3000", "https://kylekennedy.dev"}
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
@@ -111,7 +111,7 @@ func main() {
 	router.Handle("/graphql", srv)
 
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
-	log.Fatal(http.ListenAndServe(":"+port, router))
+	// log.Fatal(http.ListenAndServe(":"+port, router))
 
-	// log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.dev.pem", "/etc/ssl/kylekennedy.dev.key", router))
+	log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.dev.pem", "/etc/ssl/kylekennedy.dev.key", router))
 }
