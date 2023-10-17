@@ -80,7 +80,7 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_domains := []string{"http://localhost", "https://kylekennedy.dev"}
+	allowed_domains := []string{"http://localhost:3000", "https://kylekennedy.dev"}
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing

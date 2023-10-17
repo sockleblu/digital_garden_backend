@@ -13,9 +13,9 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
+	"github.com/sockleblu/digital_garden_backend/graph/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
-	"github.com/sockleblu/digital_garden_backend/graph/model"
 )
 
 // region    ************************** generated!.gotpl **************************
@@ -616,7 +616,7 @@ func (ec *executionContext) field_Mutation_changeUserPassword_args(ctx context.C
 	var arg1 model.UserInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg1, err = ec.unmarshalNUserInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserInput(ctx, tmp)
+		arg1, err = ec.unmarshalNUserInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -631,7 +631,7 @@ func (ec *executionContext) field_Mutation_createArticle_args(ctx context.Contex
 	var arg0 model.ArticleInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNArticleInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleInput(ctx, tmp)
+		arg0, err = ec.unmarshalNArticleInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -646,7 +646,7 @@ func (ec *executionContext) field_Mutation_createUser_args(ctx context.Context, 
 	var arg0 model.UserInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNUserInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserInput(ctx, tmp)
+		arg0, err = ec.unmarshalNUserInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -706,7 +706,7 @@ func (ec *executionContext) field_Mutation_login_args(ctx context.Context, rawAr
 	var arg0 model.LoginInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNLoginInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐLoginInput(ctx, tmp)
+		arg0, err = ec.unmarshalNLoginInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐLoginInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -721,7 +721,7 @@ func (ec *executionContext) field_Mutation_refreshToken_args(ctx context.Context
 	var arg0 model.TokenInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNTokenInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTokenInput(ctx, tmp)
+		arg0, err = ec.unmarshalNTokenInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTokenInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -745,7 +745,7 @@ func (ec *executionContext) field_Mutation_updateArticle_args(ctx context.Contex
 	var arg1 model.ArticleInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg1, err = ec.unmarshalNArticleInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleInput(ctx, tmp)
+		arg1, err = ec.unmarshalNArticleInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -805,7 +805,7 @@ func (ec *executionContext) field_Query_articlesByTags_args(ctx context.Context,
 	var arg0 []*model.TagInput
 	if tmp, ok := rawArgs["tags"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tags"))
-		arg0, err = ec.unmarshalNTagInput2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx, tmp)
+		arg0, err = ec.unmarshalNTagInput2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -1027,7 +1027,7 @@ func (ec *executionContext) _Article_tags(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*model.Tag)
 	fc.Result = res
-	return ec.marshalNTag2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagᚄ(ctx, field.Selections, res)
+	return ec.marshalNTag2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Article_tags(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1079,7 +1079,7 @@ func (ec *executionContext) _Article_user(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Article_user(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1223,7 +1223,7 @@ func (ec *executionContext) _Mutation_login(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_login(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1290,7 +1290,7 @@ func (ec *executionContext) _Mutation_createUser(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createUser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1357,7 +1357,7 @@ func (ec *executionContext) _Mutation_changeUserPassword(ctx context.Context, fi
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_changeUserPassword(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1479,7 +1479,7 @@ func (ec *executionContext) _Mutation_createArticle(ctx context.Context, field g
 	}
 	res := resTmp.(*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createArticle(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1550,7 +1550,7 @@ func (ec *executionContext) _Mutation_updateArticle(ctx context.Context, field g
 	}
 	res := resTmp.(*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_updateArticle(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1786,7 +1786,7 @@ func (ec *executionContext) _Query_allUsers(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserᚄ(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_allUsers(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1842,7 +1842,7 @@ func (ec *executionContext) _Query_user(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_user(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1909,7 +1909,7 @@ func (ec *executionContext) _Query_article(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_article(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1980,7 +1980,7 @@ func (ec *executionContext) _Query_allArticles(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_allArticles(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2040,7 +2040,7 @@ func (ec *executionContext) _Query_articlesByTags(ctx context.Context, field gra
 	}
 	res := resTmp.([]*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_articlesByTags(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2111,7 +2111,7 @@ func (ec *executionContext) _Query_articleById(ctx context.Context, field graphq
 	}
 	res := resTmp.(*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_articleById(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2399,7 +2399,7 @@ func (ec *executionContext) _Tag_articles(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Tag_articles(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2635,7 +2635,7 @@ func (ec *executionContext) _User_articles(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.([]*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_User_articles(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4467,7 +4467,7 @@ func (ec *executionContext) unmarshalInputArticleInput(ctx context.Context, obj 
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tags"))
-			data, err := ec.unmarshalNTagInput2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx, v)
+			data, err := ec.unmarshalNTagInput2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -5490,11 +5490,11 @@ func (ec *executionContext) ___Type(ctx context.Context, sel ast.SelectionSet, o
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) marshalNArticle2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalNArticle2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v model.Article) graphql.Marshaler {
 	return ec._Article(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalNArticle2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Article) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -5518,7 +5518,7 @@ func (ec *executionContext) marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsockleblu
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, sel, v[i])
+			ret[i] = ec.marshalNArticle2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5538,7 +5538,7 @@ func (ec *executionContext) marshalNArticle2ᚕᚖivyᚗcaveᚗlocalᚋsockleblu
 	return ret
 }
 
-func (ec *executionContext) marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v *model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalNArticle2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v *model.Article) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5548,7 +5548,7 @@ func (ec *executionContext) marshalNArticle2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋ
 	return ec._Article(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNArticleInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleInput(ctx context.Context, v interface{}) (model.ArticleInput, error) {
+func (ec *executionContext) unmarshalNArticleInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐArticleInput(ctx context.Context, v interface{}) (model.ArticleInput, error) {
 	res, err := ec.unmarshalInputArticleInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
@@ -5583,7 +5583,7 @@ func (ec *executionContext) marshalNInt2int(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) unmarshalNLoginInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐLoginInput(ctx context.Context, v interface{}) (model.LoginInput, error) {
+func (ec *executionContext) unmarshalNLoginInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐLoginInput(ctx context.Context, v interface{}) (model.LoginInput, error) {
 	res, err := ec.unmarshalInputLoginInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
@@ -5603,7 +5603,7 @@ func (ec *executionContext) marshalNString2string(ctx context.Context, sel ast.S
 	return res
 }
 
-func (ec *executionContext) marshalNTag2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Tag) graphql.Marshaler {
+func (ec *executionContext) marshalNTag2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Tag) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -5627,7 +5627,7 @@ func (ec *executionContext) marshalNTag2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋd
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNTag2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTag(ctx, sel, v[i])
+			ret[i] = ec.marshalNTag2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTag(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5647,7 +5647,7 @@ func (ec *executionContext) marshalNTag2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋd
 	return ret
 }
 
-func (ec *executionContext) marshalNTag2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTag(ctx context.Context, sel ast.SelectionSet, v *model.Tag) graphql.Marshaler {
+func (ec *executionContext) marshalNTag2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTag(ctx context.Context, sel ast.SelectionSet, v *model.Tag) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5657,7 +5657,7 @@ func (ec *executionContext) marshalNTag2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigi
 	return ec._Tag(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNTagInput2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx context.Context, v interface{}) ([]*model.TagInput, error) {
+func (ec *executionContext) unmarshalNTagInput2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx context.Context, v interface{}) ([]*model.TagInput, error) {
 	var vSlice []interface{}
 	if v != nil {
 		vSlice = graphql.CoerceList(v)
@@ -5666,7 +5666,7 @@ func (ec *executionContext) unmarshalNTagInput2ᚕᚖivyᚗcaveᚗlocalᚋsockle
 	res := make([]*model.TagInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNTagInput2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNTagInput2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -5674,21 +5674,21 @@ func (ec *executionContext) unmarshalNTagInput2ᚕᚖivyᚗcaveᚗlocalᚋsockle
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalNTagInput2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInput(ctx context.Context, v interface{}) (*model.TagInput, error) {
+func (ec *executionContext) unmarshalNTagInput2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInput(ctx context.Context, v interface{}) (*model.TagInput, error) {
 	res, err := ec.unmarshalInputTagInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNTokenInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTokenInput(ctx context.Context, v interface{}) (model.TokenInput, error) {
+func (ec *executionContext) unmarshalNTokenInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTokenInput(ctx context.Context, v interface{}) (model.TokenInput, error) {
 	res, err := ec.unmarshalInputTokenInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNUser2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v model.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v model.User) graphql.Marshaler {
 	return ec._User(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNUser2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.User) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -5712,7 +5712,7 @@ func (ec *executionContext) marshalNUser2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, sel, v[i])
+			ret[i] = ec.marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5732,7 +5732,7 @@ func (ec *executionContext) marshalNUser2ᚕᚖivyᚗcaveᚗlocalᚋsocklebluᚋ
 	return ret
 }
 
-func (ec *executionContext) marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2ᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5742,7 +5742,7 @@ func (ec *executionContext) marshalNUser2ᚖivyᚗcaveᚗlocalᚋsocklebluᚋdig
 	return ec._User(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNUserInput2ivyᚗcaveᚗlocalᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserInput(ctx context.Context, v interface{}) (model.UserInput, error) {
+func (ec *executionContext) unmarshalNUserInput2githubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐUserInput(ctx context.Context, v interface{}) (model.UserInput, error) {
 	res, err := ec.unmarshalInputUserInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
