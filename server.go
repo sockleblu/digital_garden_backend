@@ -17,10 +17,10 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph"
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/auth"
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/generated"
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
+	"github.com/sockleblu/digital_garden_backend/graph"
+	"github.com/sockleblu/digital_garden_backend/graph/auth"
+	"github.com/sockleblu/digital_garden_backend/graph/generated"
+	"github.com/sockleblu/digital_garden_backend/graph/model"
 )
 
 const (
@@ -110,8 +110,8 @@ func main() {
 	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
 	router.Handle("/graphql", srv)
 
-	log.Printf("connect to https://localhost:%s/ for GraphQL playground", port)
-	// log.Fatal(http.ListenAndServe(":"+port, router))
+	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
+	log.Fatal(http.ListenAndServe(":"+port, router))
 
-	log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.dev.crt", "/etc/ssl/kylekennedy.dev.key", router))
+	// log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.dev.pem", "/etc/ssl/kylekennedy.dev.key", router))
 }

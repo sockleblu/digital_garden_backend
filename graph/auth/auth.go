@@ -1,19 +1,20 @@
 package auth
 
 import (
-	"net/http"
 	"context"
-	"strings"
 	"log"
+	"net/http"
+	"strings"
 
 	"github.com/jinzhu/gorm"
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/helpers"
+	"github.com/sockleblu/digital_garden_backend/graph/helpers"
+	"github.com/sockleblu/digital_garden_backend/graph/model"
 )
 
 // A private key for context that only this package can access. This is important
 // to prevent collisions between different context uses
 var userCtxKey = &contextKey{"user"}
+
 type contextKey struct {
 	name string
 }
@@ -53,7 +54,7 @@ func Middleware(db *gorm.DB) func(http.Handler) http.Handler {
 			}
 
 			user := model.User{
-				ID: id,
+				ID:       id,
 				Username: username,
 			}
 

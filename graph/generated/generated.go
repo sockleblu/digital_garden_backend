@@ -15,7 +15,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/introspection"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
+	"github.com/sockleblu/digital_garden_backend/graph/model"
 )
 
 // region    ************************** generated!.gotpl **************************

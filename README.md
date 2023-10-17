@@ -1,6 +1,6 @@
 mkdir blog_backend
 cd blog_backend
-go mod init ivy.cave.local/sockleblu/blog_backend
+go mod init github.com/sockleblu/blog_backend
 go get github.com/99designs/gqlgen
 
 go run github.com/99designs/gqlgen init

@@ -1,4 +1,4 @@
-module ivy.cave.local/sockleblu/digital_garden_backend
+module github.com/sockleblu/digital_garden_backend
 
 go 1.21
 

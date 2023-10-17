@@ -1,14 +1,14 @@
 package helpers
 
 import (
+	"log"
 	"strings"
 	"time"
-	"log"
 
-	"ivy.cave.local/sockleblu/digital_garden_backend/graph/model"
-	"golang.org/x/crypto/bcrypt"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/jinzhu/gorm"
+	"github.com/sockleblu/digital_garden_backend/graph/model"
+	"golang.org/x/crypto/bcrypt"
 )
 
 var secretKey = []byte("secret_key")
@@ -21,7 +21,7 @@ func MapTagsFromInput(tagsInput []*model.TagInput) []*model.Tag {
 		})
 	}
 
-    return tags
+	return tags
 }
 
 func CreateSlug(title string) string {
@@ -43,7 +43,7 @@ func CheckPasswordHash(password, hash string) (bool, error) {
 func GenerateToken(username string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"username": username,
-		"exp": time.Now().Add(time.Hour * 24).Unix(),
+		"exp":      time.Now().Add(time.Hour * 24).Unix(),
 	})
 
 	tokenString, err := token.SignedString(secretKey)
