@@ -121,8 +121,7 @@ func main() {
     		log.Fatal(err)
 	}
 
-	//cfg.Certificates = append(cfg.Certificates, cert)
-	// keep adding remaining certs to cfg.Certificates
+	cfg.Certificates = append(cfg.Certificates, cert)
 
 	cfg.BuildNameToCertificate()
 
