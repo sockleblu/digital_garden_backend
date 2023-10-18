@@ -113,5 +113,28 @@ func main() {
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 	// log.Fatal(http.ListenAndServe(":"+port, router))
 
-	log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key", router))
+	cfg := &tls.Config{}
+
+	cert, err := tls.LoadX509KeyPair(
+		"/etc/ssl/kylekennedy.local.crt", 
+		"/etc/ssl/kylekennedy.local.key"
+	)
+
+	if err != nil {
+    		log.Fatal(err)
+	}
+
+	//cfg.Certificates = append(cfg.Certificates, cert)
+	// keep adding remaining certs to cfg.Certificates
+
+	cfg.BuildNameToCertificate()
+
+	server := http.Server{
+    		Addr:      "kylekennedy.local:1337",
+    		Handler:   router,
+    		TLSConfig: cfg,
+	}
+
+	log.Fatal(server.ListenAndServeTLS("", ""))
+	//log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key", router))
 }
