@@ -113,5 +113,5 @@ func main() {
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 	// log.Fatal(http.ListenAndServe(":"+port, router))
 
-	log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.dev.crt", "/etc/ssl/kylekennedy.dev.key", router))
+	log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key", router))
 }
