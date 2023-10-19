@@ -86,11 +86,12 @@ func main() {
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.New(cors.Options{
-		AllowedOrigins:   []string{"*"},
-		AllowedHeaders:   []string{"Authorization", "Content-Type", "Origin", "Accept"},
-		AllowedMethods:   []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
-		AllowCredentials: true,
-		Debug:            true,
+		AllowedOrigins:     allowed_domains,
+		AllowedHeaders:     []string{"Authorization", "Content-Type", "Origin", "Accept"},
+		AllowedMethods:     []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
+		AllowCredentials:   true,
+		OptionsPassthrough: true,
+		Debug:              true,
 	}).Handler)
 
 	router.Use(auth.Middleware(db))
