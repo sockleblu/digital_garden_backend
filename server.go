@@ -116,7 +116,7 @@ func main() {
 
 	cfg := &tls.Config{}
 
-	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key")
+	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.dev.crt", "/etc/ssl/kylekennedy.dev.key")
 
 	if err != nil {
     		log.Fatal(err)
