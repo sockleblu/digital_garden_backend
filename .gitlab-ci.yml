@@ -33,8 +33,8 @@ deploy:
   tags:
     - blog
   script:
-    - sudo systemctl stop digital_garden_backend
-    - sudo cp ./digital_garden_backend /opt/digital_garden_backend
-    - sudo systemctl start digital_garden_backend
+    - sudo systemctl stop digiden_backend
+    - sudo cp ./digital_garden_backend /opt/digiden/digiden_backend
+    - sudo systemctl start digiden_backend
   dependencies:
     - build
