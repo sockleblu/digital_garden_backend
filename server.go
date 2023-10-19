@@ -117,7 +117,7 @@ func main() {
 
 	cfg := &tls.Config{}
 
-	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.dev.crt", "/etc/ssl/kylekennedy.dev.key")
+	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key")
 
 	if err != nil {
 		log.Fatal(err)
@@ -128,7 +128,7 @@ func main() {
 	cfg.BuildNameToCertificate()
 
 	server := http.Server{
-		Addr:      "kylekennedy.dev:1337",
+		Addr:      "kylekennedy.local:1337",
 		Handler:   router,
 		TLSConfig: cfg,
 	}
