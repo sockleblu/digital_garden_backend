@@ -81,7 +81,7 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_domains := []string{"http://localhost:3000", "https://kylekennedy.dev"}
+	allowed_domains := []string{"http://localhost:3000", "https://kylekennedy.dev", "http://kylekennedy.dev"}
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
@@ -117,7 +117,7 @@ func main() {
 
 	cfg := &tls.Config{}
 
-	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key")
+	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.dev.crt", "/etc/ssl/kylekennedy.dev.key")
 
 	if err != nil {
 		log.Fatal(err)
@@ -128,7 +128,7 @@ func main() {
 	cfg.BuildNameToCertificate()
 
 	server := http.Server{
-		Addr:      "kylekennedy.local:1337",
+		Addr:      "kylekennedy.dev:1337",
 		Handler:   router,
 		TLSConfig: cfg,
 	}
