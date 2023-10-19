@@ -1,10 +1,10 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
 	"log"
 	"net/http"
-	"crypto/tls"
 	"os"
 	"slices"
 
@@ -87,7 +87,8 @@ func main() {
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.New(cors.Options{
 		AllowedOrigins:   allowed_domains,
-		AllowedHeaders:   []string{"Authorization", "Content-Type"},
+		AllowedHeaders:   []string{"Authorization", "Content-Type", "Origin", "Accept"},
+		AllowedMethods:   []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
 		AllowCredentials: true,
 		Debug:            true,
 	}).Handler)
@@ -119,7 +120,7 @@ func main() {
 	cert, err := tls.LoadX509KeyPair("/etc/ssl/kylekennedy.dev.crt", "/etc/ssl/kylekennedy.dev.key")
 
 	if err != nil {
-    		log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	cfg.Certificates = append(cfg.Certificates, cert)
@@ -127,9 +128,9 @@ func main() {
 	cfg.BuildNameToCertificate()
 
 	server := http.Server{
-    		Addr:      "kylekennedy.dev:1337",
-    		Handler:   router,
-    		TLSConfig: cfg,
+		Addr:      "kylekennedy.dev:1337",
+		Handler:   router,
+		TLSConfig: cfg,
 	}
 
 	log.Fatal(server.ListenAndServeTLS("", ""))
