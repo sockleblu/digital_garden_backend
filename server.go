@@ -9,11 +9,13 @@ import (
 	//"slices"
 
 	"github.com/99designs/gqlgen/graphql/handler"
-	"github.com/99designs/gqlgen/graphql/handler/transport"
+	//"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/go-chi/chi"
-	"github.com/gorilla/websocket"
-	"github.com/rs/cors"
+	"github.com/go-chi/chi/middleware"
+	"github.com/go-chi/cors"
+	//"github.com/gorilla/websocket"
+	//"github.com/rs/cors"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -83,36 +85,39 @@ func main() {
 	router := chi.NewRouter()
 	allowed_domains := []string{"http://localhost:3000", "http://kylekennedy.dev", "https://kylekennedy.dev"}
 
+	router.Use(middleware.Logger)
+
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
-	router.Use(cors.New(cors.Options{
+	router.Use(cors.Handler(cors.Options{
 		AllowedOrigins:     allowed_domains,
 		AllowedHeaders:     []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
 		AllowedMethods:     []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
 		//AllowCredentials:   true,
 		//OptionsPassthrough: true,
 		Debug:              true,
-	}).Handler)
+	}))
+	//}).Handler)
 
 	router.Use(auth.Middleware(db))
 
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{DB: db}}))
 
-	srv.AddTransport(&transport.Websocket{
-		Upgrader: websocket.Upgrader{
-			CheckOrigin: func(r *http.Request) bool {
+	//srv.AddTransport(&transport.Websocket{
+	//	Upgrader: websocket.Upgrader{
+	//		CheckOrigin: func(r *http.Request) bool {
 				// Check against your desired domains here
-				if r.Method == "OPTIONS" {
-			            return true
-				}
+	//			if r.Method == "OPTIONS" {
+	//		            return true
+	//			}
 
-				return r.Host == "kylekennedy.dev"
+	//			return r.Host == "kylekennedy.dev"
 				// return slices.Contains(allowed_domains, r.Host)
-			},
-			ReadBufferSize:  1024,
-			WriteBufferSize: 1024,
-		},
-	})
+	//		},
+	//		ReadBufferSize:  1024,
+	//		WriteBufferSize: 1024,
+	//	},
+	//})
 
 	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
 	router.Handle("/graphql", srv)
