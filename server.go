@@ -102,8 +102,12 @@ func main() {
 		Upgrader: websocket.Upgrader{
 			CheckOrigin: func(r *http.Request) bool {
 				// Check against your desired domains here
-				// return r.Host == "kylekennedy.dev"
-				return slices.Contains(allowed_domains, r.Host)
+				if r.Method == "OPTIONS" {
+				    return
+				}
+
+				return r.Host == "kylekennedy.dev"
+				// return slices.Contains(allowed_domains, r.Host)
 			},
 			ReadBufferSize:  1024,
 			WriteBufferSize: 1024,
