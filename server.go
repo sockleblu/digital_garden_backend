@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"slices"
+	//"slices"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
@@ -103,7 +103,7 @@ func main() {
 			CheckOrigin: func(r *http.Request) bool {
 				// Check against your desired domains here
 				if r.Method == "OPTIONS" {
-				    return
+			            return true
 				}
 
 				return r.Host == "kylekennedy.dev"
