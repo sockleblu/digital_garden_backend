@@ -138,7 +138,7 @@ func main() {
 	cfg.BuildNameToCertificate()
 
 	server := http.Server{
-		Addr:      "kyelkennedy:1337",
+		Addr:      "kylekennedy:1337",
 		Handler:   router,
 		TLSConfig: cfg,
 	}
