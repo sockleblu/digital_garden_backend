@@ -83,14 +83,14 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_domains := []string{"http://localhost:3000", "http://kylekennedy.dev", "https://kylekennedy.dev"}
+	//allowed_domains := []string{"http://localhost:3000", "http://kylekennedy.dev", "https://kylekennedy.dev"}
 
 	router.Use(middleware.Logger)
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.Handler(cors.Options{
-		AllowedOrigins:     allowed_domains,
+		//AllowedOrigins:     ,
 		AllowedHeaders:     []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
 		AllowedMethods:     []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
 		//AllowCredentials:   true,
@@ -138,7 +138,7 @@ func main() {
 	cfg.BuildNameToCertificate()
 
 	server := http.Server{
-		Addr:      "kylekennedy.dev:1337",
+		Addr:      "kyelkennedy:1337",
 		Handler:   router,
 		TLSConfig: cfg,
 	}
