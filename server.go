@@ -91,9 +91,11 @@ func main() {
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.Handler(cors.Options{
 		//AllowedOrigins:     ,
-		AllowedHeaders:     []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
+		//AllowedHeaders:     []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
+		AllowedHeaders:     []string{"*"},
 		AllowedMethods:     []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
-		//AllowCredentials:   true,
+		AllowCredentials:   true,
+		MaxAge:             3600,
 		//OptionsPassthrough: true,
 		Debug:              true,
 	}))
