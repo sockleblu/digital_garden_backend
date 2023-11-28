@@ -66,6 +66,6 @@ type Query {
   article(slug: String!): Article!
   allArticles: [Article!]!
 #  allTags: [String!]!
-  articlesByTags(tags: [TagInput!]!): [Article!]!
+  articlesByTags(tagsInput: [TagInput!]!): [Article!]!
   articleById(articleId: Int!): Article!
 }

@@ -6,19 +6,23 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
+
 	//"slices"
 
 	"github.com/99designs/gqlgen/graphql/handler"
-	//"github.com/99designs/gqlgen/graphql/handler/transport"
+	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
-	//"github.com/gorilla/websocket"
+	"github.com/gorilla/websocket"
+
 	//"github.com/rs/cors"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 
 	"github.com/sockleblu/digital_garden_backend/graph"
 	"github.com/sockleblu/digital_garden_backend/graph/auth"
@@ -72,32 +76,45 @@ func main() {
 
 	//db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
-	db, err := gorm.Open("postgres", dsn)
+	newLogger := logger.New(
+		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
+		logger.Config{
+			SlowThreshold:             time.Second,   // Slow SQL threshold
+			LogLevel:                  logger.Silent, // Log level
+			IgnoreRecordNotFoundError: true,          // Ignore ErrRecordNotFound error for logger
+			ParameterizedQueries:      true,          // Don't include params in the SQL log
+			Colorful:                  false,         // Disable color
+		},
+	)
+
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		Logger: newLogger,
+	})
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
+	//defer db.Close()
 
-	db.LogMode(true)
+	//db.LogMode(true)
 	db.AutoMigrate(&model.User{}, &model.Article{}, &model.Tag{})
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	//allowed_domains := []string{"http://localhost:3000", "http://kylekennedy.dev", "https://kylekennedy.dev"}
+	allowed_origins := []string{"http://localhost:3000", "https://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
 
 	router.Use(middleware.Logger)
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.Handler(cors.Options{
-		//AllowedOrigins:     ,
-		//AllowedHeaders:     []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
-		AllowedHeaders:     []string{"*"},
-		AllowedMethods:     []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
-		AllowCredentials:   true,
-		MaxAge:             3600,
+		AllowedOrigins: allowed_origins,
+		AllowedHeaders: []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
+		//AllowedHeaders:     []string{"*"},
+		AllowedMethods:   []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
+		AllowCredentials: true,
+		MaxAge:           3600,
 		//OptionsPassthrough: true,
-		Debug:              true,
+		Debug: true,
 	}))
 	//}).Handler)
 
@@ -105,21 +122,21 @@ func main() {
 
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{DB: db}}))
 
-	//srv.AddTransport(&transport.Websocket{
-	//	Upgrader: websocket.Upgrader{
-	//		CheckOrigin: func(r *http.Request) bool {
+	srv.AddTransport(&transport.Websocket{
+		Upgrader: websocket.Upgrader{
+			CheckOrigin: func(r *http.Request) bool {
 				// Check against your desired domains here
-	//			if r.Method == "OPTIONS" {
-	//		            return true
-	//			}
+				if r.Method == "OPTIONS" {
+					return true
+				}
 
-	//			return r.Host == "kylekennedy.dev"
+				return r.Host == "kylekennedy.dev"
 				// return slices.Contains(allowed_domains, r.Host)
-	//		},
-	//		ReadBufferSize:  1024,
-	//		WriteBufferSize: 1024,
-	//	},
-	//})
+			},
+			ReadBufferSize:  1024,
+			WriteBufferSize: 1024,
+		},
+	})
 
 	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
 	router.Handle("/graphql", srv)

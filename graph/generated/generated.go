@@ -74,7 +74,7 @@ type ComplexityRoot struct {
 		AllUsers       func(childComplexity int) int
 		Article        func(childComplexity int, slug string) int
 		ArticleByID    func(childComplexity int, articleID int) int
-		ArticlesByTags func(childComplexity int, tags []*model.TagInput) int
+		ArticlesByTags func(childComplexity int, tagsInput []*model.TagInput) int
 		User           func(childComplexity int, userID int) int
 	}
 
@@ -114,7 +114,7 @@ type QueryResolver interface {
 	User(ctx context.Context, userID int) (*model.User, error)
 	Article(ctx context.Context, slug string) (*model.Article, error)
 	AllArticles(ctx context.Context) ([]*model.Article, error)
-	ArticlesByTags(ctx context.Context, tags []*model.TagInput) ([]*model.Article, error)
+	ArticlesByTags(ctx context.Context, tagsInput []*model.TagInput) ([]*model.Article, error)
 	ArticleByID(ctx context.Context, articleID int) (*model.Article, error)
 }
 
@@ -342,7 +342,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.ArticlesByTags(childComplexity, args["tags"].([]*model.TagInput)), true
+		return e.complexity.Query.ArticlesByTags(childComplexity, args["tagsInput"].([]*model.TagInput)), true
 
 	case "Query.user":
 		if e.complexity.Query.User == nil {
@@ -590,7 +590,7 @@ type Query {
   article(slug: String!): Article!
   allArticles: [Article!]!
 #  allTags: [String!]!
-  articlesByTags(tags: [TagInput!]!): [Article!]!
+  articlesByTags(tagsInput: [TagInput!]!): [Article!]!
   articleById(articleId: Int!): Article!
 }
 `, BuiltIn: false},
@@ -803,14 +803,14 @@ func (ec *executionContext) field_Query_articlesByTags_args(ctx context.Context,
 	var err error
 	args := map[string]interface{}{}
 	var arg0 []*model.TagInput
-	if tmp, ok := rawArgs["tags"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tags"))
+	if tmp, ok := rawArgs["tagsInput"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tagsInput"))
 		arg0, err = ec.unmarshalNTagInput2ᚕᚖgithubᚗcomᚋsocklebluᚋdigital_garden_backendᚋgraphᚋmodelᚐTagInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
 	}
-	args["tags"] = arg0
+	args["tagsInput"] = arg0
 	return args, nil
 }
 
@@ -2026,7 +2026,7 @@ func (ec *executionContext) _Query_articlesByTags(ctx context.Context, field gra
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().ArticlesByTags(rctx, fc.Args["tags"].([]*model.TagInput))
+		return ec.resolvers.Query().ArticlesByTags(rctx, fc.Args["tagsInput"].([]*model.TagInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)

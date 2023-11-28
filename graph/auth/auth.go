@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jinzhu/gorm"
 	"github.com/sockleblu/digital_garden_backend/graph/helpers"
 	"github.com/sockleblu/digital_garden_backend/graph/model"
+	"gorm.io/gorm"
 )
 
 // A private key for context that only this package can access. This is important

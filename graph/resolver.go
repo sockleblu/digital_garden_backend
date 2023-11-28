@@ -1,8 +1,8 @@
 package graph
 
 import (
-	//"gorm.io/gorm"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
+	//"github.com/jinzh/gorm"
 )
 
 type Resolver struct {

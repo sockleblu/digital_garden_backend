@@ -242,8 +242,24 @@ func (r *queryResolver) AllArticles(ctx context.Context) ([]*model.Article, erro
 }
 
 // ArticlesByTags is the resolver for the articlesByTags field.
-func (r *queryResolver) ArticlesByTags(ctx context.Context, tags []*model.TagInput) ([]*model.Article, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *queryResolver) ArticlesByTags(ctx context.Context, tagsInput []*model.TagInput) ([]*model.Article, error) {
+	var tagList []string
+
+	for _, tag := range tagsInput {
+		tagList = append(tagList, tag.Tag)
+	}
+
+	var tags []*model.Tag
+
+	// Load primary keys into Tag models
+	r.DB.Debug().Where("tag IN ?", tagList).Find(&tags)
+
+	var articles []*model.Article
+
+	// Retrieve association using newly loaded tags model
+	r.DB.Debug().Model(&tags).Association("Articles").Find(&articles)
+
+	return articles, nil
 }
 
 // ArticleByID is the resolver for the articleById field.
