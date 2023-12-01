@@ -100,14 +100,15 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_origins := []string{"http://localhost:3000", "https://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
+	allowed_origins := []string{"http://localhost:3000", "http://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
 
 	router.Use(middleware.Logger)
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.Handler(cors.Options{
-		AllowedOrigins: allowed_origins,
+		//AllowedOrigins: allowed_origins,
+		AllowedOrigins: []string{"*"},
 		AllowedHeaders: []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
 		//AllowedHeaders:     []string{"*"},
 		AllowedMethods:   []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},

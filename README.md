@@ -128,3 +128,30 @@ Query Variables:
   }
 }
 ```
+
+# Articles by Tags
+```
+query ArticlesByTags($tagInputs: [TagInput!]!) {
+  articlesByTags(tags: $tagInputs) {
+    id
+    title
+    slug
+    user {
+      username
+    }
+  }
+}
+```
+
+Query Variables
+```
+{
+  "tagsInput": [
+    {
+      "tag": "blog"
+    },
+    {
+      "tag": "CORS"
+    }
+  ]
+}
