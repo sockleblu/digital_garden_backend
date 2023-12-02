@@ -100,7 +100,7 @@ func main() {
 	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	allowed_origins := []string{"http://localhost:3000", "http://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
+	//allowed_origins := []string{"http://localhost:3000", "http://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
 
 	router.Use(middleware.Logger)
 
