@@ -8,8 +8,6 @@ import (
 	"os"
 	"time"
 
-	//"slices"
-
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
@@ -17,8 +15,6 @@ import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
 	"github.com/gorilla/websocket"
-
-	//"github.com/rs/cors"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -39,9 +35,9 @@ var db *gorm.DB
 
 func main() {
 	digidenEnv := os.Getenv("DIGIDEN_ENV")
-        if digidenEnv == "" {
-                digidenEnv = "dev"
-        }
+	if digidenEnv == "" {
+		digidenEnv = "dev"
+	}
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -73,13 +69,6 @@ func main() {
 		host, dbport, user, password, dbname)
 
 	var err error
-	// pgx (the driver used for Gorm -> psql) enables prepared statement cache by default. To disable...
-	//db, err = gorm.Open(postgres.New(postgres.Config{
-	//	DSN:                  psqlInfo,
-	//	PreferSimpleProtocol: true,
-	//}), &gorm.Config{})
-
-	//db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
@@ -98,31 +87,25 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	//defer db.Close()
 
-	//db.LogMode(true)
 	db.AutoMigrate(&model.User{}, &model.Article{}, &model.Tag{})
-	//db.Model(&model.Article{}).AddForeignKey("article_id", "tags(id)", "RESTRICT", "RESTRICT")
 
 	router := chi.NewRouter()
-	//allowed_origins := []string{"http://localhost:3000", "http://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
+	allowed_origins := []string{"http://localhost:3000", "http://localhost:1337", "http://kylekennedy.dev", "https://kylekennedy.dev"}
 
 	router.Use(middleware.Logger)
 
 	// Add CORS middleware around every request
 	// See https://github.com/rs/cors for full option listing
 	router.Use(cors.Handler(cors.Options{
-		//AllowedOrigins: allowed_origins,
-		AllowedOrigins: []string{"*"},
-		AllowedHeaders: []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
-		//AllowedHeaders:     []string{"*"},
+		AllowedOrigins: allowed_origins,
+		//AllowedOrigins: []string{"*"},
+		AllowedHeaders:   []string{"Authorization", "Content-Type", "Origin", "Accept", "X-Requested-With"},
 		AllowedMethods:   []string{"GET", "POST", "DELETE", "PUT", "HEAD", "OPTIONS"},
 		AllowCredentials: true,
 		MaxAge:           3600,
-		//OptionsPassthrough: true,
-		Debug: true,
+		Debug:            true,
 	}))
-	//}).Handler)
 
 	router.Use(auth.Middleware(db))
 
@@ -137,7 +120,6 @@ func main() {
 				}
 
 				return r.Host == "kylekennedy.dev"
-				// return slices.Contains(allowed_domains, r.Host)
 			},
 			ReadBufferSize:  1024,
 			WriteBufferSize: 1024,
@@ -145,12 +127,11 @@ func main() {
 	})
 
 	if digidenEnv != "prod" {
-	    router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
-        }
+		router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
+	}
 	router.Handle("/graphql", srv)
 
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
-	// log.Fatal(http.ListenAndServe(":"+port, router))
 
 	cfg := &tls.Config{}
 
@@ -171,5 +152,4 @@ func main() {
 	}
 
 	log.Fatal(server.ListenAndServeTLS("", ""))
-	//log.Fatal(http.ListenAndServeTLS(":"+port, "/etc/ssl/kylekennedy.local.crt", "/etc/ssl/kylekennedy.local.key", router))
 }
