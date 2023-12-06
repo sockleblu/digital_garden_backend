@@ -38,6 +38,11 @@ const (
 var db *gorm.DB
 
 func main() {
+	digidenEnv := os.Getenv("DIGIDEN_ENV")
+        if digidenEnv == "" {
+                digidenEnv = "dev"
+        }
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = graphqlPort
@@ -139,7 +144,9 @@ func main() {
 		},
 	})
 
-	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
+	if digidenEnv != "prod" {
+	    router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
+        }
 	router.Handle("/graphql", srv)
 
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
