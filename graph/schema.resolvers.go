@@ -80,6 +80,12 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input model.UserInput
 
 // ChangeUserPassword is the resolver for the changeUserPassword field.
 func (r *mutationResolver) ChangeUserPassword(ctx context.Context, userID int, input model.UserInput) (*model.User, error) {
+	user_auth := auth.ForContext(ctx)
+	log.Printf("context looks like ", user_auth)
+	if user_auth == nil {
+		return &model.User{}, fmt.Errorf("Denying")
+	}
+
 	user := model.User{
 		ID: userID,
 	}
@@ -106,6 +112,12 @@ func (r *mutationResolver) ChangeUserPassword(ctx context.Context, userID int, i
 
 // DeleteUserByID is the resolver for the deleteUserByID field.
 func (r *mutationResolver) DeleteUserByID(ctx context.Context, userID int) (bool, error) {
+	user_auth := auth.ForContext(ctx)
+	log.Printf("context looks like ", user_auth)
+	if user_auth == nil {
+		return false, fmt.Errorf("Denying")
+	}
+
 	user := model.User{
 		ID: userID,
 	}
@@ -120,9 +132,9 @@ func (r *mutationResolver) DeleteUserByID(ctx context.Context, userID int) (bool
 
 // CreateArticle is the resolver for the createArticle field.
 func (r *mutationResolver) CreateArticle(ctx context.Context, input model.ArticleInput) (*model.Article, error) {
-	user := auth.ForContext(ctx)
-	log.Printf("context looks like ", user)
-	if user == nil {
+	user_auth := auth.ForContext(ctx)
+	log.Printf("context looks like ", user_auth)
+	if user_auth == nil {
 		return &model.Article{}, fmt.Errorf("Denying")
 	}
 
@@ -153,6 +165,12 @@ func (r *mutationResolver) CreateArticle(ctx context.Context, input model.Articl
 
 // UpdateArticle is the resolver for the updateArticle field.
 func (r *mutationResolver) UpdateArticle(ctx context.Context, articleID int, input model.ArticleInput) (*model.Article, error) {
+	user_auth := auth.ForContext(ctx)
+	log.Printf("context looks like ", user_auth)
+	if user_auth == nil {
+		return &model.Article{}, fmt.Errorf("Denying")
+	}
+
 	article := model.Article{
 		ID: articleID,
 	}
@@ -176,6 +194,12 @@ func (r *mutationResolver) UpdateArticle(ctx context.Context, articleID int, inp
 
 // DeleteArticleByID is the resolver for the deleteArticleByID field.
 func (r *mutationResolver) DeleteArticleByID(ctx context.Context, articleID int) (bool, error) {
+	user_auth := auth.ForContext(ctx)
+	log.Printf("context looks like ", user_auth)
+	if user_auth == nil {
+		return false, fmt.Errorf("Denying")
+	}
+
 	article := model.Article{
 		ID: articleID,
 	}
@@ -210,6 +234,12 @@ func (r *mutationResolver) RefreshToken(ctx context.Context, input model.TokenIn
 
 // AllUsers is the resolver for the allUsers field.
 func (r *queryResolver) AllUsers(ctx context.Context) ([]*model.User, error) {
+	user_auth := auth.ForContext(ctx)
+	log.Printf("context looks like ", user_auth)
+	if user_auth == nil {
+		return []*model.User{}, fmt.Errorf("Denying")
+	}
+
 	var users []*model.User
 	r.DB.Find(&users)
 
